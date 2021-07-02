@@ -1,13 +1,14 @@
 -- phpMyAdmin SQL Dump
--- version 4.5.1
--- http://www.phpmyadmin.net
+-- version 5.0.3
+-- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: 19 Okt 2019 pada 04.27
--- Versi Server: 10.1.10-MariaDB
--- PHP Version: 5.6.19
+-- Waktu pembuatan: 02 Jul 2021 pada 04.51
+-- Versi server: 10.4.14-MariaDB
+-- Versi PHP: 7.4.11
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
+START TRANSACTION;
 SET time_zone = "+00:00";
 
 
@@ -41,16 +42,17 @@ CREATE TABLE `tb_barang` (
 --
 
 INSERT INTO `tb_barang` (`id_brg`, `nama_brg`, `keterangan`, `kategori`, `harga`, `stok`, `gambar`) VALUES
-(1, 'Sepatu', 'Sepatu Merek All Start', 'Pakaian Pria', 10000, 35, 'sepatu.jpg'),
-(2, 'Asus', 'Merek Terbaru', 'Elektronik', 200000000, 909, 'laptop.jpg'),
-(3, 'Samsung s10', 'HP Merek Samsung', 'Electronik', 200039840, 100, 'samsungs10.jpg'),
-(14, 'canon250', 'canon250 terabaru', 'Elektronik', 1290000, 12, 'canon250.jpg'),
-(15, 'KEMEJA', 'Kemja putih', 'baju', 120090, 12, 'kemeja.jpg'),
-(17, 'JAM TANGAN', 'Belanda', 'Elektronik', 1290000, 0, 'jam1.jpg'),
-(18, 'Cape Jumpsuit', 'Merek Terbaru', 'pakaian wanita', 8998800, 10, 'wanita1.png'),
-(19, 'Athena', 'Baju Wanita', 'pakaian wanita', 609888, 10, 'wanita.jpg'),
-(20, 'Pakaian anak-anak', 'Fashion Kid', 'pakaian anak anak', 98000, 10, 'pakai_anak.jpg'),
-(21, 'Bola', 'Merek Mikasa', 'peralatan olahraga', 89000, 10, 'bola.jpg');
+(22, 'PAKET TRULIFE', 'Paket lengkap diffuser dan varian oil lengkap, cocok untuk kebutuhan keluarga.', 'Health', 200000, 100, 'health_1.jpg'),
+(23, 'PAKET B – TRULIFE ESSENTIAL OIL (Peppermint)', 'Paket B - Essential Oil Peppermint', 'Health', 1250000, 40, 'health_2.jpg'),
+(24, 'CLASSY GLAM', 'Lunch Set Yang Modern, Stylish & Praktis Untuk Wanita Modern', 'Outdoor', 370000, 96, 'outdoor_1.jpg'),
+(25, 'CLICK TO GO ROUND', 'Tempat makan yang bisa menampung ragam makanan dalam satu waktu', 'Outdoor', 430000, 10, 'outdoor_2.jpg\r\n'),
+(26, 'FUNSION MASTER ICE SHAVER', 'Bikin Es Serut Halus Selembut Salju Dengan Cepat', 'Food Preparation', 1230000, 15, 'fpreparation_1.jpg'),
+(27, 'TURBO CHOPPER', 'Cacah Serba Cepat, Serba Bisa Bikin Apa Aja', 'Food Preparation', 440000, 22, 'fpreparation_2.jpg'),
+(28, 'BLOOMIA BOWL (4)', 'Mangkuk piring model terbaru dan modis terdiri dari 4 buah mangkuk', 'Food Serving', 140000, 50, 'fserving_1.jpg'),
+(29, 'ELEGANZIA BOWL 4.6L', 'Mangkuk dengan volume 4.6 Liter cocok digunakan untuk menyimpan makanan dalam jumlah yang banyak', 'Food Serving', 700000, 50, 'fserving_2.jpg'),
+(31, 'SNACK IT', 'Wadah Simpan Aneka Kue Atau Cemilan Bersekat. Simpan Dua Sekaligus!', 'Food Storage', 180000, 50, 'fstorage_2.jpg'),
+(32, 'TCHEF SAUCE PAN 1 LT', 'Alat masak dengan fitur modern dan elegan dari Tupperware Indonesia', 'Cookware', 1500000, 30, 'cookware_1.jpg'),
+(33, 'TCHEF FRY PAN', 'Memasak semakin menyenangkan dengan TChef Fry Pan', 'Cookware', 2200000, 20, 'cookware_2.jpg');
 
 -- --------------------------------------------------------
 
@@ -71,11 +73,11 @@ CREATE TABLE `tb_invoice` (
 --
 
 INSERT INTO `tb_invoice` (`id`, `nama`, `alamat`, `tgl_pesan`, `batas_bayar`) VALUES
-(1, 'sance', 'baban', '2019-10-13 11:16:58', '2019-10-14 11:16:58'),
-(2, 'Sance Ainul Yakin', 'Bababakn wanajaya', '2019-10-13 11:22:33', '2019-10-14 11:22:33'),
-(3, 'Sance', 'Babakan Wanajaya', '2019-10-13 17:25:06', '2019-10-14 17:25:06'),
-(4, 'sance', 'babakn', '2019-10-14 00:58:17', '2019-10-15 00:58:17'),
-(5, '', '', '2019-10-14 01:01:05', '2019-10-15 01:01:05');
+(6, 'Anisa Ilham', '132 Jalan Anggrek, RT 01 RW 14', '2021-06-21 09:31:25', '2021-06-22 09:31:25'),
+(7, 'Anisa Ilham', '132 Jalan Anggrek, RT 01 RW 14', '2021-06-21 12:16:41', '2021-06-22 12:16:41'),
+(8, 'Anisa Ilham', '132 Jalan Anggrek, RT 01 RW 14', '2021-07-01 09:19:55', '2021-07-02 09:19:55'),
+(9, 'Nabilla Rahayu Rusyana', 'Majalengka', '2021-07-01 13:36:01', '2021-07-02 13:36:01'),
+(10, '', '', '2021-07-02 09:05:26', '2021-07-03 09:05:26');
 
 -- --------------------------------------------------------
 
@@ -105,7 +107,14 @@ INSERT INTO `tb_pesanan` (`id`, `id_invoice`, `id_brg`, `nama_brg`, `jumlah`, `h
 (5, 3, 14, 'canon250', 1, 1290000, ''),
 (6, 4, 1, 'Sepatu', 1, 10000, ''),
 (7, 5, 1, 'Sepatu', 2, 10000, ''),
-(8, 6, 1, 'Sepatu', 2, 10000, '');
+(8, 6, 1, 'Sepatu', 2, 10000, ''),
+(9, 6, 1, 'Sepatu', 1, 10000, ''),
+(10, 7, 22, 'PAKET TRULIFE', 1, 2360000, ''),
+(11, 7, 24, 'CLASSY GLAM', 1, 370000, ''),
+(12, 8, 22, 'PAKET TRULIFE', 1, 2360000, ''),
+(13, 8, 24, 'CLASSY GLAM', 1, 370000, ''),
+(14, 9, 24, 'CLASSY GLAM', 1, 370000, ''),
+(15, 10, 24, 'CLASSY GLAM', 1, 370000, '');
 
 --
 -- Trigger `tb_pesanan`
@@ -137,60 +146,66 @@ CREATE TABLE `tb_user` (
 INSERT INTO `tb_user` (`id`, `nama`, `username`, `password`, `role_id`) VALUES
 (1, 'admin', 'admin', 'admin', 1),
 (2, 'user', 'user', 'user', 2),
-(5, 'sa', 'sa', 'sa', 2);
+(5, 'sa', 'sa', 'sa', 2),
+(6, 'azie abdul', 'azie', 'azie', 2);
 
 --
 -- Indexes for dumped tables
 --
 
 --
--- Indexes for table `tb_barang`
+-- Indeks untuk tabel `tb_barang`
 --
 ALTER TABLE `tb_barang`
   ADD PRIMARY KEY (`id_brg`);
 
 --
--- Indexes for table `tb_invoice`
+-- Indeks untuk tabel `tb_invoice`
 --
 ALTER TABLE `tb_invoice`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indexes for table `tb_pesanan`
+-- Indeks untuk tabel `tb_pesanan`
 --
 ALTER TABLE `tb_pesanan`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indexes for table `tb_user`
+-- Indeks untuk tabel `tb_user`
 --
 ALTER TABLE `tb_user`
   ADD PRIMARY KEY (`id`);
 
 --
--- AUTO_INCREMENT for dumped tables
+-- AUTO_INCREMENT untuk tabel yang dibuang
 --
 
 --
--- AUTO_INCREMENT for table `tb_barang`
+-- AUTO_INCREMENT untuk tabel `tb_barang`
 --
 ALTER TABLE `tb_barang`
-  MODIFY `id_brg` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=22;
+  MODIFY `id_brg` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=34;
+
 --
--- AUTO_INCREMENT for table `tb_invoice`
+-- AUTO_INCREMENT untuk tabel `tb_invoice`
 --
 ALTER TABLE `tb_invoice`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
+
 --
--- AUTO_INCREMENT for table `tb_pesanan`
+-- AUTO_INCREMENT untuk tabel `tb_pesanan`
 --
 ALTER TABLE `tb_pesanan`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
+
 --
--- AUTO_INCREMENT for table `tb_user`
+-- AUTO_INCREMENT untuk tabel `tb_user`
 --
 ALTER TABLE `tb_user`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+COMMIT;
+
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
